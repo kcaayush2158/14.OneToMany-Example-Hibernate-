@@ -13,6 +13,9 @@ public class UserDetails {
     private int id;
     private String username;
     @OneToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "USER_VECHILE",joinColumns=@JoinColumn(name = "USER_ID"),
+        inverseJoinColumns=@JoinColumn(name = "VEHICLE_ID")
+    )
     private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
     public Collection<Vehicle> getVehicle() {
