@@ -1,6 +1,8 @@
 package com.application.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name = "UserDetails")
@@ -10,9 +12,16 @@ public class UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinTable(name="VECHILE_ID")
-    private Vehicle vehicle;
+    @OneToMany(cascade = {CascadeType.ALL})
+    private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
+
+    public Collection<Vehicle> getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Collection<Vehicle> vehicle) {
+        this.vehicle = vehicle;
+    }
 
     public int getId() {
         return id;
@@ -29,15 +38,5 @@ public class UserDetails {
     public void setUsername(String username) {
         this.username = username;
     }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
-    }
-
-
 
 }

@@ -13,7 +13,11 @@ public class Main {
 
         Vehicle vehicle = new Vehicle();
         vehicle.setVehicleName("ferari");
-        userdetails.setVehicle(vehicle);
+
+        Vehicle vehicle2 = new Vehicle();
+        vehicle2.setVehicleName("lambo");
+     userdetails.getVehicle().add(vehicle);
+     userdetails.getVehicle().add(vehicle2);
 
         SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         Session session = sessionFactory.openSession();
